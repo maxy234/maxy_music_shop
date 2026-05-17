@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Methods | MaxyKeys Music Shopping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .payment-hero { background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%); color: white; padding: 60px 0; text-align: center; }
+        .payment-section { padding: 60px 0; }
+        .payment-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .method-card { background: white; border-radius: 24px; padding: 30px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .method-card:hover { transform: translateY(-5px); }
+        .method-icon { font-size: 3rem; color: var(--primary); margin-bottom: 16px; }
+        .method-steps { background: #f8f6f0; border-radius: 20px; padding: 20px; margin-top: 20px; text-align: left; }
+        .method-steps li { padding: 8px 0; }
+        .security-badge { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 20px; padding: 30px; text-align: center; margin-top: 30px; }
+        @media (max-width:768px){ .payment-methods { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <header>... (same header) ...</header>
+    <section class="payment-hero"><div class="container"><h1>Payment Methods</h1><p>Secure and convenient payment options</p></div></section>
+    <section class="payment-section"><div class="container">
+        <div class="payment-methods">
+            <div class="method-card"><div class="method-icon"><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i></div><h3>Card Payments</h3><p>Visa, Mastercard, American Express</p><div class="method-steps"><strong>How to pay:</strong><ul><li>Select "Pay with Paystack"</li><li>Enter card details</li><li>Complete 3D Secure verification</li><li>Payment confirmed instantly</li></ul></div></div>
+            <div class="method-card"><div class="method-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Money</h3><p>MTN MoMo, Vodafone Cash, AirtelTigo Money</p><div class="method-steps"><strong>How to pay:</strong><ul><li>Select "Pay with Mobile Money"</li><li>Enter your phone number</li><li>Authorize payment on your phone</li><li>Instant confirmation</li></ul></div></div>
+            <div class="method-card"><div class="method-icon"><i class="fas fa-university"></i></div><h3>Bank Transfer</h3><p>Direct bank transfer to our account</p><div class="method-steps"><strong>Bank Details:</strong><ul><li>Bank: Stanbic Bank Ghana</li><li>Account: MaxyKeys Music Ltd</li><li>Account No: 9030001234567</li><li>Branch: Spintex Road</li></ul><p style="margin-top:12px;"><small>Send proof of payment via WhatsApp to 0503139412</small></p></div></div>
+            <div class="method-card"><div class="method-icon"><i class="fas fa-hand-holding-usd"></i></div><h3>Cash on Delivery (Accra)</h3><p>Pay when you receive your order</p><div class="method-steps"><strong>Terms:</strong><ul><li>Available only in Accra</li><li>Small deposit may be required</li><li>Cash payment at delivery</li><li>Contact us to arrange</li></ul></div></div>
+        </div>
+        <div class="security-badge"><i class="fas fa-shield-alt" style="font-size:3rem;color:#28a745;"></i><h3>100% Secure Payments</h3><p>All transactions are encrypted with SSL and processed through Paystack, PCI-DSS compliant.</p><div style="margin-top:16px;"><i class="fab fa-cc-paypal"></i> <i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fas fa-mobile-alt"></i></div></div>
+    </div></section>
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.jpg" alt="MaxyKeys Logo" class="footer-logo-img">
+                <p>© 2026 MaxyKeys Music Shopping — Ghana's #1 Music Store</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="faq.html">FAQs</a>
+                    <a href="shipping.html">Shipping Info</a>
+                    <a href="returns.html">Returns Policy</a>
+                    <a href="payment-guide.html">Payment Methods</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/16zon4tPhb/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@maxykeys?_r=1&_t=ZS-94LhUU5lEB7"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/opokumaxwell256?igsh=c2thaXQwNGx6b2oy"><i class="fab fa-instagram"></i></a>
+                    <a href="t.me/maxykeys"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/233503139412"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p>Email: opokumaxwell256@gmail.com | WhatsApp: 0503139412</p></div>
+        </div>
+    </footer>
+ 
+    <script src="js/script.js"></script>
+</body>
+</html>

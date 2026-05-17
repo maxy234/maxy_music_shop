@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Info | MaxyKeys Music Shopping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .shipping-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .shipping-section {
+            padding: 60px 0;
+        }
+        .shipping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .shipping-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .shipping-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .shipping-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .shipping-card li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .region-table {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .region-table h3 {
+            background: var(--primary);
+            padding: 20px;
+            margin: 0;
+            color: var(--dark);
+        }
+        .region-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .region-table th, .region-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .region-table th {
+            background: #f8f6f0;
+            font-weight: 600;
+        }
+        .pickup-info {
+            background: linear-gradient(135deg, #f8f6f0 0%, #f0ece3 100%);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .shipping-grid { grid-template-columns: 1fr; }
+            .region-table { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo-area">
+                <img src="images/logo.jpg" alt="MaxyKeys Logo" class="logo">
+                <h1>MAXYKEYS <span>MUSIC</span></h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#products">Shop</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="shipping-hero">
+        <div class="container">
+            <h1>Shipping Information</h1>
+            <p>Fast, reliable delivery across Ghana</p>
+        </div>
+    </section>
+
+    <section class="shipping-section">
+        <div class="container">
+            <div class="shipping-grid">
+                <div class="shipping-card">
+                    <h3><i class="fas fa-truck-fast"></i> Delivery Timeframes</h3>
+                    <ul>
+                        <li><span>Greater Accra</span><span><strong>1-2 business days</strong></span></li>
+                        <li><span>Tema, Kasoa</span><span><strong>1-2 business days</strong></span></li>
+                        <li><span>Kumasi, Takoradi</span><span><strong>2-3 business days</strong></span></li>
+                        <li><span>Cape Coast, Koforidua</span><span><strong>2-4 business days</strong></span></li>
+                        <li><span>Sunyani, Tamale</span><span><strong>3-5 business days</strong></span></li>
+                        <li><span>Remote/Upper Regions</span><span><strong>5-7 business days</strong></span></li>
+                    </ul>
+                </div>
+                <div class="shipping-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Shipping Fees</h3>
+                    <ul>
+                        <li><span>Greater Accra</span><span><strong>GHS 30 - 50</strong></span></li>
+                        <li><span>Ashanti Region (Kumasi)</span><span><strong>GHS 60 - 80</strong></span></li>
+                        <li><span>Western Region</span><span><strong>GHS 70 - 100</strong></span></li>
+                        <li><span>Eastern/Central</span><span><strong>GHS 50 - 70</strong></span></li>
+                        <li><span>Northern/Upper Regions</span><span><strong>GHS 120 - 180</strong></span></li>
+                        <li><span>Free Pickup at Store</span><span><strong>FREE</strong></span></li>
+                    </ul>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: var(--gray);"><i class="fas fa-info-circle"></i> Contact admin for exact fees based on your location and product size.</p>
+                </div>
+                <div class="shipping-card">
+                    <h3><i class="fas fa-box-open"></i> Delivery Process</h3>
+                    <ul>
+                        <li><span>1. Order placed</span><span><i class="fas fa-check-circle" style="color: var(--primary);"></i></span></li>
+                        <li><span>2. Payment confirmed</span><span><i class="fas fa-check-circle" style="color: var(--primary);"></i></span></li>
+                        <li><span>3. Order processed (1-2hrs)</span><span><i class="fas fa-box"></i></span></li>
+                        <li><span>4. Shipped with tracking</span><span><i class="fas fa-truck"></i></span></li>
+                        <li><span>5. Delivered to your door</span><span><i class="fas fa-home"></i></span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="region-table">
+                <h3><i class="fas fa-map-marked-alt"></i> Delivery by Region</h3>
+                <table>
+                    <thead>
+                        <tr><th>Region</th><th>Major Cities</th><th>Est. Delivery</th><th>Fee Range</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Greater Accra</td><td>Accra, Tema, Adenta, Madina</td><td>1-2 days</td><td>GHS 30-50</td></tr>
+                        <tr><td>Ashanti</td><td>Kumasi, Obuasi, Ejisu</td><td>2-3 days</td><td>GHS 60-80</td></tr>
+                        <tr><td>Western</td><td>Takoradi, Sekondi, Tarkwa</td><td>2-4 days</td><td>GHS 70-100</td></tr>
+                        <tr><td>Eastern</td><td>Koforidua, Nkawkaw, Suhum</td><td>2-4 days</td><td>GHS 50-70</td></tr>
+                        <tr><td>Central</td><td>Cape Coast, Kasoa, Winneba</td><td>2-4 days</td><td>GHS 50-70</td></tr>
+                        <tr><td>Volta</td><td>Ho, Hohoe, Keta</td><td>3-5 days</td><td>GHS 80-120</td></tr>
+                        <tr><td>Bono/Bono East</td><td>Sunyani, Techiman</td><td>3-5 days</td><td>GHS 90-130</td></tr>
+                        <tr><td>Northern</td><td>Tamale, Yendi</td><td>5-7 days</td><td>GHS 120-160</td></tr>
+                        <tr><td>Upper East/West</td><td>Bolgatanga, Wa</td><td>5-7 days</td><td>GHS 140-180</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pickup-info">
+                <i class="fas fa-store" style="font-size: 3rem; color: var(--primary);"></i>
+                <h3>Free Store Pickup</h3>
+                <p>Pick up your order at our Spintex Road, Accra location - completely FREE!</p>
+                <p><strong>Address:</strong> Abesim-Nkrankrom Road, Sunyani (Saint James Clinic) - Ghana</p>
+                <p><strong>Hours:</strong> Monday-Saturday, 9am - 7pm</p>
+                <a href="https://wa.me/233503139412" class="btn-primary" style="margin-top: 16px; display: inline-block;"><i class="fab fa-whatsapp"></i> Confirm Pickup</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="MaxyKeys Logo" class="footer-logo-img">
+                <p>© 2026 MaxyKeys Music Shopping — Ghana's #1 Music Store</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="faq.html">FAQs</a>
+                    <a href="shipping.html">Shipping Info</a>
+                    <a href="returns.html">Returns Policy</a>
+                    <a href="payment-guide.html">Payment Methods</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/16zon4tPhb/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@maxykeys?_r=1&_t=ZS-94LhUU5lEB7"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/opokumaxwell256?igsh=c2thaXQwNGx6b2oy"><i class="fab fa-instagram"></i></a>
+                    <a href="t.me/maxykeys"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/233503139412"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div> 
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p>Email: opokumaxwell256@gmail.com | WhatsApp: 0503139412</p></div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
