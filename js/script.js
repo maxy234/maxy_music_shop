@@ -1,17 +1,17 @@
 // ========== PRODUCT DATA (12 items in GHS) ==========
 const productsData = [
-    { id: 1, name: "FL Studio 21 Producer Edition", category: "Music Software", price: 0.2, image: "images/FL Studio 21 Producer.jpg" },
-    { id: 2, name: "Ableton Live 11 Suite", category: "Music Software", price: 1299, image: "images/Ableton Live 11 Suite.jpg" },
-    { id: 3, name: "Logic Pro X", category: "Music Software", price: 1499, image: "images/Logic Pro X.jpg" },
-    { id: 4, name: "Yamaha P-125 Digital Piano", category: "Instruments", price: 4250, image: "images/Yamaha P-125 Digital Piano.jpg" },
-    { id: 5, name: "Roland FP-30X Keyboard", category: "Instruments", price: 3899, image: "images/Roland FP-30X Keyboard.jpg" },
-    { id: 6, name: "Fender Stratocaster Guitar", category: "Instruments", price: 3299, image: "images/Fender Stratocaster Guitar.jpg" },
-    { id: 7, name: "Shure SM7B Microphone", category: "Accessories", price: 1899, image: "images/Shure SM7B Microphone.jpg" },
-    { id: 8, name: "Audio-Technica ATH-M50x", category: "Accessories", price: 999, image: "images/Audio-Technica ATH-M50x.jpg" },
-    { id: 9, name: "Focusrite Scarlett 2i2", category: "Accessories", price: 1199, image: "images/Focusrite Scarlett 2i2.jpg" },
-    { id: 10, name: "NI Komplete Kontrol M32", category: "Music Software", price: 2799, image: "images/NI Komplete Kontrol M32.jpg" },
-    { id: 11, name: "Gibson Les Paul Electric", category: "Instruments", price: 4999, image: "images/Gibson Les Paul Electric.jpg" },
-    { id: 12, name: "KRK Rokit 5 Monitors", category: "Accessories", price: 1599, image: "images/KRK Rokit 5 Monitors.jpg" }
+    { id: 1, name: "FL Studio 21 Producer Edition", category: "Music Software", price: 0.1, image: "https://i.pinimg.com/736x/77/55/12/775512476a2861f3b60f3b4783cb92ab.jpg" },
+    { id: 2, name: "Ableton Live 11 Suite", category: "Music Software", price: 1299, image: "https://i1-c.pinimg.com/736x/15/78/03/157803ce79eec56675ad95eff3f73d6d.jpg" },
+    { id: 3, name: "Logic Pro X", category: "Music Software", price: 1499, image: "https://placehold.co/400x300?text=Logic+Pro" },
+    { id: 4, name: "Yamaha P-125 Digital Piano", category: "Instruments", price: 4250, image: "https://placehold.co/400x300?text=Yamaha+P125" },
+    { id: 5, name: "Roland FP-30X Keyboard", category: "Instruments", price: 3899, image: "https://placehold.co/400x300?text=Roland+FP30X" },
+    { id: 6, name: "Fender Stratocaster Guitar", category: "Instruments", price: 3299, image: "https://placehold.co/400x300?text=Fender" },
+    { id: 7, name: "Shure SM7B Microphone", category: "Accessories", price: 1899, image: "https://placehold.co/400x300?text=Shure+SM7B" },
+    { id: 8, name: "Audio-Technica ATH-M50x", category: "Accessories", price: 999, image: "https://placehold.co/400x300?text=ATH-M50x" },
+    { id: 9, name: "Focusrite Scarlett 2i2", category: "Accessories", price: 1199, image: "https://placehold.co/400x300?text=Scarlett+2i2" },
+    { id: 10, name: "NI Komplete Kontrol M32", category: "Music Software", price: 2799, image: "https://placehold.co/400x300?text=Komplete" },
+    { id: 11, name: "Gibson Les Paul Electric", category: "Instruments", price: 4999, image: "https://placehold.co/400x300?text=Gibson" },
+    { id: 12, name: "KRK Rokit 5 Monitors", category: "Accessories", price: 1599, image: "https://placehold.co/400x300?text=KRK+Rokit" }
 ];
 
 // ========== CART STATE ==========
@@ -29,7 +29,8 @@ function saveCart() {
 
 function updateCartCount() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById("cartCount").innerText = count;
+    const cartCountSpan = document.getElementById("cartCount");
+    if (cartCountSpan) cartCountSpan.innerText = count;
 }
 
 function getProductById(id) {
@@ -48,6 +49,11 @@ function renderProducts() {
         filtered = filtered.filter(p => p.name.toLowerCase().includes(term) || p.category.toLowerCase().includes(term));
     }
     
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="text-align:center; grid-column:1/-1;">No products found. Try another search!</p>';
+        return;
+    }
+    
     grid.innerHTML = filtered.map(p => {
         const cartItem = cart.find(item => item.id === p.id);
         const inCart = !!cartItem;
@@ -56,7 +62,7 @@ function renderProducts() {
                 <img src="${p.image}" class="product-img" alt="${p.name}" onerror="this.src='https://placehold.co/400x300?text=Music+Gear'">
                 <h3 class="product-title">${p.name}</h3>
                 <p class="product-price">GHS ${p.price.toLocaleString()}</p>
-                <button class="add-to-cart ${inCart ? 'remove-mode' : ''}" data-id="${p.id}">${inCart ? 'Remove from Cart' : 'Add to Cart'}</button>
+                <button class="add-to-cart ${inCart ? 'remove-mode' : ''}" data-id="${p.id}">${inCart ? 'Remove' : 'Add to Cart'}</button>
             </div>
         `;
     }).join("");
@@ -139,7 +145,8 @@ function changeQuantity(id, delta) {
 
 function updateTotal() {
     const total = cart.reduce((sum, item) => sum + (getProductById(item.id).price * item.quantity), 0);
-    document.getElementById("cartTotalGHS").innerText = `GHS ${total.toLocaleString()}`;
+    const totalSpan = document.getElementById("cartTotalGHS");
+    if (totalSpan) totalSpan.innerText = `GHS ${total.toLocaleString()}`;
 }
 
 // ========== FORM VALIDATION ==========
@@ -173,7 +180,7 @@ function showError(msg) {
 // ========== PAYSTACK INTEGRATION ==========
 function payWithPaystack(totalAmount, userData, cartItems) {
     const handler = PaystackPop.setup({
-        key: 'pk_live_eaccd6908452f06a64169fc02a9cc4b266e3f486', // 🔴 REPLACE WITH YOUR LIVE PAYSTACK KEY
+        key: 'pk_live_eaccd6908452f06a64169fc02a9cc4b266e3f486',
         email: userData.email,
         amount: totalAmount * 100,
         currency: 'GHS',
@@ -191,10 +198,10 @@ function payWithPaystack(totalAmount, userData, cartItems) {
 function onPaymentSuccess(userData, cartItems) {
     const summaryHtml = `
         <div style="text-align: center;">
-            <i class="fas fa-check-circle" style="font-size: 4rem; color: #28a745;"></i>
+            <i class="fas fa-check-circle" style="font-size: 3rem; color: #28a745;"></i>
             <h2>Payment Successful! 🎉</h2>
             <p>Thank you <strong>${userData.fullName}</strong> for shopping with MaxyKeys!</p>
-            <div style="background: #f8f9fa; padding: 20px; border-radius: 16px; margin: 20px 0; text-align: left;">
+            <div style="background: #f8f9fa; padding: 16px; border-radius: 16px; margin: 16px 0; text-align: left;">
                 <h4>Order Summary:</h4>
                 <ul style="margin-top: 10px;">
                     ${cartItems.map(item => {
@@ -209,14 +216,17 @@ function onPaymentSuccess(userData, cartItems) {
             <a href="https://wa.me/233503139412?text=Hello! I just paid for my order. My name is ${encodeURIComponent(userData.fullName)}. Order items: ${encodeURIComponent(cartItems.map(i => getProductById(i.id).name).join(', '))}" target="_blank" class="btn-primary" style="margin: 10px 0; display: inline-block;">📱 Send Order on WhatsApp</a>
         </div>
     `;
-    document.getElementById("summaryContent").innerHTML = summaryHtml;
-    document.getElementById("summaryModal").style.display = "flex";
+    const summaryContent = document.getElementById("summaryContent");
+    if (summaryContent) summaryContent.innerHTML = summaryHtml;
+    const summaryModal = document.getElementById("summaryModal");
+    if (summaryModal) summaryModal.style.display = "flex";
     
     cart = [];
     saveCart();
     renderProducts();
     renderCartModal();
-    document.getElementById("userForm").reset();
+    const userForm = document.getElementById("userForm");
+    if (userForm) userForm.reset();
 }
 
 // ========== MODAL CONTROLS ==========
@@ -230,14 +240,17 @@ function initModals() {
     const okBtn = document.getElementById("okSummaryBtn");
     
     if (cartBtn) {
-        cartBtn.onclick = () => { renderCartModal(); cartModal.style.display = "flex"; };
+        cartBtn.onclick = () => { renderCartModal(); if(cartModal) cartModal.style.display = "flex"; };
     }
     
     closeBtns.forEach(btn => {
-        btn.onclick = () => { cartModal.style.display = "none"; summaryModal.style.display = "none"; };
+        btn.onclick = () => { 
+            if(cartModal) cartModal.style.display = "none"; 
+            if(summaryModal) summaryModal.style.display = "none"; 
+        };
     });
     
-    if (continueBtn) continueBtn.onclick = () => cartModal.style.display = "none";
+    if (continueBtn) continueBtn.onclick = () => { if(cartModal) cartModal.style.display = "none"; };
     
     if (checkoutBtn) {
         checkoutBtn.onclick = () => {
@@ -254,16 +267,16 @@ function initModals() {
                 houseAddress: document.getElementById("houseAddress").value,
             };
             const total = cart.reduce((s, i) => s + (getProductById(i.id).price * i.quantity), 0);
-            cartModal.style.display = "none";
+            if(cartModal) cartModal.style.display = "none";
             payWithPaystack(total, user, [...cart]);
         };
     }
     
-    if (okBtn) okBtn.onclick = () => { summaryModal.style.display = "none"; location.reload(); };
+    if (okBtn) okBtn.onclick = () => { if(summaryModal) summaryModal.style.display = "none"; };
     
     window.onclick = (e) => {
-        if (e.target === cartModal) cartModal.style.display = "none";
-        if (e.target === summaryModal) summaryModal.style.display = "none";
+        if (e.target === cartModal && cartModal) cartModal.style.display = "none";
+        if (e.target === summaryModal && summaryModal) summaryModal.style.display = "none";
     };
 }
 
@@ -282,7 +295,7 @@ function initSearchFilter() {
     
     if (clearSearch) {
         clearSearch.onclick = () => {
-            searchInput.value = "";
+            if(searchInput) searchInput.value = "";
             searchTerm = "";
             renderProducts();
         };
@@ -310,6 +323,18 @@ function initContactForm() {
     }
 }
 
+// ========== MOBILE MENU ==========
+function initMobileMenu() {
+    const menuBtn = document.getElementById("mobileMenuBtn");
+    const navLinks = document.getElementById("navLinks");
+    
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+    }
+}
+
 // ========== ACTIVE NAVIGATION ==========
 function initActiveNav() {
     const sections = document.querySelectorAll("section");
@@ -319,7 +344,7 @@ function initActiveNav() {
         let current = "";
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100;
-            if (scrollY >= sectionTop) {
+            if (window.scrollY >= sectionTop) {
                 current = section.getAttribute("id");
             }
         });
@@ -340,5 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initModals();
     initSearchFilter();
     initContactForm();
+    initMobileMenu();
     initActiveNav();
 });
